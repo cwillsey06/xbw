@@ -1,0 +1,23 @@
+xbw
+===
+xbw, written in POSIX Bourne Shell,
+provides a simplified brew CLI for
+lazy keyboard trolls.
+
+Installation
+------------
+Move or symlink xbw into your path.
+You may need to chmod +x xbw to be
+able to execute it.
+
+License
+-------
+This is free and unencumbered software released into the public domain.
+
+Anyone is free to copy, modify, publish, use, compile, sell, or
+distribute this software, either in source code form or as a compiled
+binary, for any purpose, commercial or non-commercial, and by any
+means.
+
+For more information, please refer to <https://unlicense.org>
+

@@ -1,0 +1,45 @@
+#!/bin/sh -e
+# This is free and unencumbered software released into the public domain.
+#
+# Anyone is free to copy, modify, publish, use, compile, sell, or
+# distribute this software, either in source code form or as a compiled
+# binary, for any purpose, commercial or non-commercial, and by any
+# means.
+
+BREW="/opt/homebrew/bin/brew"
+VERSION="1.0.0"
+OPTION="install"
+
+main() {
+	case "$1" in
+		-H|--bhelp)   OPTION="help"      ;;
+		-R|--remove)  OPTION="uninstall" ;;
+		-U|--update)  OPTION="update"	 ;;
+		-l|--list)    OPTION="list"      ;;
+		-q|--query)   OPTION="search"    ;;
+		-u|--upgrade) OPTION="upgrade"	 ;;
+		-h|--help)    print_help; exit 0 ;;
+	esac
+	case "$1" in -*) shift ;; esac
+	"$BREW" "$OPTION" "$@"
+}
+print_help() {
+	printf  '%s v%s\n' 'xbw' "$VERSION"
+	printf  'Usage: %s\n' 'xbw [-HRUhlqu] <package>'
+	printfl 'no options     install argv packages'             \
+	        '-H  --bhelp    prints brew information and exits' \
+			'-R  --remove   removes argv packages'             \
+			'-U  --upgrade  update all packages'               \
+			'-h  --help     prints help information and exits' \
+			'-l  --list     list all installed packages'       \
+			'-q  --query    search brew for a package'         \
+			'-u  --update   updates argv packages'
+}
+printfl() { 
+	for str in "$@"; do
+		printf '  %s\n' "$str"
+	done
+}
+
+main "$@"
+
